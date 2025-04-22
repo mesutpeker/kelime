@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Oyunu - Cümle Kurma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a3093;
+            --secondary-color: #a044ff;
+            --accent-color: #ffd166;
+            --accent-color-2: #06d6a0;
+            --accent-color-3: #ef476f;
+            --bg-color: #f5f0ff;
+            --light-color: #f9f5ff;
+            --text-color: #333;
+            --success-color: #0b6e4f;
+            --error-color: #d62828;
+        }
+        
+        * {
+            box-sizing: border-box;
+            font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(170, 142, 245, 0.2) 0%, rgba(170, 142, 245, 0) 20%),
+                radial-gradient(circle at 90% 80%, rgba(106, 48, 147, 0.2) 0%, rgba(106, 48, 147, 0) 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 209, 102, 0.1) 0%, rgba(255, 209, 102, 0) 30%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: bounce 2s infinite alternate;
+        }
+        
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(106, 48, 147, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2), var(--accent-color-3), var(--primary-color));
+            z-index: 1;
+        }
+        
+        .question-container {
+            border: 3px dashed var(--primary-color);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            background-color: var(--light-color);
+            transition: all 0.3s;
+        }
+        
+        .question-container:hover {
+            box-shadow: 0 5px 15px rgba(106, 48, 147, 0.15);
+        }
+        
+        .hint-container {
+            margin-top: 12px;
+            padding: 10px 15px;
+            background-color: #e6f7ff;
+            border: 1px solid #91d5ff;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .hint-title {
+            font-weight: bold;
+            color: #0050b3;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .hint-container::before {
+            content: "💡";
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .words-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+            justify-content: center;
+            min-height: 70px;
+        }
+        
+        .word {
+            background-color: var(--accent-color);
+            padding: 12px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+        }
+        
+        .word::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.3), transparent);
+            pointer-events: none;
+        }
+        
+        .word:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .word:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .word.selected {
+            opacity: 0.5;
+            pointer-events: none;
+            transform: scale(0.95);
+            box-shadow: none;
+        }
+        
+        .answer-container {
+            min-height: 70px;
+            border: 3px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            background-color: white;
+            transition: all 0.3s;
+            background-image: 
+                linear-gradient(45deg, rgba(106, 48, 147, 0.05) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(106, 48, 147, 0.05) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(106, 48, 147, 0.05) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(106, 48, 147, 0.05) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        
+        .selected-word {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 25px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            position: relative;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+        
+        .selected-word::after {
+            content: "×";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--error-color);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .selected-word:hover {
+            transform: translateY(-2px);
+        }
+        
+        .selected-word:hover::after {
+            opacity: 1;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+        }
+        
+        button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+            pointer-events: none;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        #hintButton {
+            background-color: #1890ff;
+        }
+        
+        #hintButton:hover {
+            background-color: #40a9ff;
+        }
+        
+        #resetButton {
+            background-color: #fa8c16;
+        }
+        
+        #resetButton:hover {
+            background-color: #ffa940;
+        }
+        
+        #nextButton {
+            background-color: var(--accent-color-2);
+            color: var(--text-color);
+        }
+        
+        #nextButton:hover {
+            background-color: #08f7b5;
+        }
+        
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .result.correct {
+            background-color: #c1f7d5;
+            color: var(--success-color);
+            border: 2px solid var(--success-color);
+        }
+        
+        .result.incorrect {
+            background-color: #ffd6d6;
+            color: var(--error-color);
+            border: 2px solid var(--error-color);
+        }
+        
+        .score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .score::before {
+            content: "🏆";
+            font-size: 1.2rem;
+        }
+        
+        .level-indicator {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: var(--text-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
+        }
+        
+        .level-indicator::before {
+            content: "⭐";
+            font-size: 1.2rem;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: confetti-fall 5s ease-in-out infinite;
+            z-index: 100;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Seviye seçim ekranı */
+        .level-select-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .level-select-title {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+        
+        .level-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .level-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .level-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+        }
+        
+        .level-card.easy::before {
+            background-color: #06d6a0;
+        }
+        
+        .level-card.medium::before {
+            background-color: #ffd166;
+        }
+        
+        .level-card.hard::before {
+            background-color: #ef476f;
+        }
+        
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .level-card h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .level-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .level-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .game-screen, .level-select-screen {
+            width: 100%;
+        }
+        
+        .game-screen {
+            display: none;
+        }
+        
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .word, .selected-word {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+            
+            button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .score, .level-indicator {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+            
+            .level-card {
+                width: 160px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 450px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            .level-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .level-card {
+                width: 90%;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Kelimelerden Cümle Oluştur</h1>
+    
+    <div class="container">
+        <!-- Seviye Seçim Ekranı -->
+        <div class="level-select-screen" id="levelSelectScreen">
+            <div class="level-select-container">
+                <div class="level-select-title">Hangi zorluk seviyesinde oynamak istiyorsun?</div>
+                
+                <div class="level-cards">
+                    <div class="level-card easy" id="easyLevel">
+                        <div class="level-icon">🌱</div>
+                        <h3>Kolay</h3>
+                        <p>3-4 kelimeden oluşan basit cümleler</p>
+                        <span class="word">Bu</span>
+                        <span class="word">Kolay</span>
+                        <span class="word">Seviye</span>
+                    </div>
+                    
+                    <div class="level-card medium" id="mediumLevel">
+                        <div class="level-icon">🌿</div>
+                        <h3>Orta</h3>
+                        <p>5 kelimeden oluşan orta zorlukta cümleler</p>
+                        <span class="word">Bu</span>
+                        <span class="word">Orta</span>
+                        <span class="word">Zorlukta</span>
+                        <span class="word">Bir</span>
+                        <span class="word">Seviye</span>
+                    </div>
+                    
+                    <div class="level-card hard" id="hardLevel">
+                        <div class="level-icon">🌳</div>
+                        <h3>Zor</h3>
+                        <p>6 kelimeden oluşan zorlu cümleler</p>
+                        <span class="word">Bu</span>
+                        <span class="word">Zor</span>
+                        <span class="word">Seviyede</span>
+                        <span class="word">Daha</span>
+                        <span class="word">Uzun</span>
+                        <span class="word">Cümleler</span>
+                    </div>
+                    
+                    <div class="level-card" id="randomLevel" style="background: linear-gradient(135deg, #06d6a0 0%, #ffd166 50%, #ef476f 100%);">
+                        <div class="level-icon">🎲</div>
+                        <h3>Karışık</h3>
+                        <p>Her seviyeden karışık cümleler</p>
+                        <span class="word" style="background-color: #06d6a0;">Kolay</span>
+                        <span class="word" style="background-color: #ffd166;">Orta</span>
+                        <span class="word" style="background-color: #ef476f;">Zor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Oyun Ekranı -->
+        <div class="game-screen" id="gameScreen">
+            <div class="level-indicator">Seviye: <span id="currentLevel">1</span></div>
+            <div class="score">Puan: <span id="score">0</span></div>
+            
+            <div class="question-container">
+                <p>Karışık verilen kelimeleri doğru sırayla yerleştirerek anlamlı bir cümle oluştur:</p>
+                <div id="hint-container" class="hint-container" style="display: none;">
+                    <p><span class="hint-title">İpucu:</span> <span id="hint-text"></span></p>
+                </div>
+            </div>
+
+            <div class="words-container" id="wordsContainer">
+                <!-- Kelimeler JavaScript ile eklenecek -->
+            </div>
+
+            <div class="answer-container" id="answerContainer">
+                <!-- Seçilen kelimeler buraya gelecek -->
+            </div>
+
+            <div class="result" id="result"></div>
+
+            <div class="buttons">
+                <button id="checkButton" disabled>Kontrol Et</button>
+                <button id="resetButton">Sıfırla</button>
+                <button id="nextButton" disabled>Sonraki Soru</button>
+                <button id="hintButton">İpucu</button>
+                <button id="backToLevelsButton">Seviye Seçimi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Değişkenler
+        let sentences = [];
+        let currentSentenceIndex = 0;
+        let currentLevel = 1;
+        let score = 0;
+        let selectedWords = [];
+        let hintsUsed = 0;
+        let maxHints = 3;
+        let gameMode = ""; // "easy", "medium", "hard", "random"
+
+        // Element referansları
+        const wordsContainer = document.getElementById('wordsContainer');
+        const answerContainer = document.getElementById('answerContainer');
+        const checkButton = document.getElementById('checkButton');
+        const resetButton = document.getElementById('resetButton');
+        const nextButton = document.getElementById('nextButton');
+        const hintButton = document.getElementById('hintButton');
+        const backToLevelsButton = document.getElementById('backToLevelsButton');
+        const resultElement = document.getElementById('result');
+        const scoreElement = document.getElementById('score');
+        const levelElement = document.getElementById('currentLevel');
+        const hintContainer = document.getElementById('hint-container');
+        const hintText = document.getElementById('hint-text');
+        const gameScreen = document.getElementById('gameScreen');
+        const levelSelectScreen = document.getElementById('levelSelectScreen');
+        
+        // Seviye seçim butonları
+        const easyLevelButton = document.getElementById('easyLevel');
+        const mediumLevelButton = document.getElementById('mediumLevel');
+        const hardLevelButton = document.getElementById('hardLevel');
+        const randomLevelButton = document.getElementById('randomLevel');
+
+        // JSON dosyasından cümleleri yükle
+        async function loadSentences() {
+            try {
+                const response = await fetch('sentences.json');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Cümleler yüklenirken bir hata oluştu:', error);
+                // Hata durumunda sabit cümleler kullan
+                return {
+                    easy: [
+                        {
+                            words: ["Ayşe", "okula", "gidiyor"],
+                            correct: "Ayşe okula gidiyor",
+                            hint: "Cümlede önce KİM, sonra NEREYE, sonra NE YAPIYOR sorusunun cevabı gelir."
+                        }
+                    ],
+                    medium: [
+                        {
+                            words: ["Kardeşim", "bahçede", "kırmızı", "top", "oynuyor"],
+                            correct: "Kardeşim bahçede kırmızı top oynuyor",
+                            hint: "KİM, NEREDE, hangi renk topla oynuyor?"
+                        }
+                    ],
+                    hard: [
+                        {
+                            words: ["Ahmet", "her", "gün", "okuldan", "sonra", "koşu yapıyor"],
+                            correct: "Ahmet her gün okuldan sonra koşu yapıyor",
+                            hint: "KİM, HANGİ SIKLIKLA, NE ZAMANDAN, SONRA, NE YAPIYOR? Önce kim olduğunu, sonra ne sıklıkla ve ne zaman yaptığını, en son ne yaptığını söyle."
+                        }
+                    ]
+                };
+            }
+        }
+
+        // Oyunu başlat
+        async function initGame() {
+            // Cümleleri yükle
+            const allSentences = await loadSentences();
+            
+            // Seviye butonlarına tıklama olaylarını ekle
+            easyLevelButton.addEventListener('click', () => startLevel('easy', allSentences.easy));
+            mediumLevelButton.addEventListener('click', () => startLevel('medium', allSentences.medium));
+            hardLevelButton.addEventListener('click', () => startLevel('hard', allSentences.hard));
+            randomLevelButton.addEventListener('click', () => {
+                // Tüm zorluk seviyelerinden karışık cümleler al
+                const randomSentences = [
+                    ...allSentences.easy,
+                    ...allSentences.medium,
+                    ...allSentences.hard
+                ];
+                startLevel('random', randomSentences);
+            });
+            
+            // Event Listeners
+            checkButton.addEventListener('click', checkAnswer);
+            resetButton.addEventListener('click', resetAnswer);
+            nextButton.addEventListener('click', nextSentence);
+            hintButton.addEventListener('click', showHint);
+            backToLevelsButton.addEventListener('click', goBackToLevelSelect);
+        }
+
+        // Seçilen seviyeyi başlat
+        function startLevel(mode, levelSentences) {
+            gameMode = mode;
+            sentences = [...levelSentences]; // Cümleleri kopyala
+            shuffleArray(sentences); // Cümleleri karıştır
+            
+            // Arayüzü güncelle
+            levelSelectScreen.style.display = 'none';
+            gameScreen.style.display = 'block';
+            
+            // Seviye metinlerini güncelle
+            if (mode === 'easy') {
+                levelElement.textContent = 'Kolay';
+            } else if (mode === 'medium') {
+                levelElement.textContent = 'Orta';
+            } else if (mode === 'hard') {
+                levelElement.textContent = 'Zor';
+            } else {
+                levelElement.textContent = 'Karışık';
+            }
+            
+            // Oyunu başlat
+            score = 0;
+            scoreElement.textContent = score;
+            currentSentenceIndex = 0;
+            loadSentence();
+            
+            // Konfeti efekti
+            createConfetti();
+        }
+
+        // Seviye seçim ekranına dön
+        function goBackToLevelSelect() {
+            gameScreen.style.display = 'none';
+            levelSelectScreen.style.display = 'block';
+        }
+
+        // Cümle yükle
+        function loadSentence() {
+            // İpucu sıfırla
+            hintContainer.style.display = 'none';
+            hintButton.disabled = false;
+            hintsUsed = 0;
+            
+            // Cümleler bittiyse
+            if (currentSentenceIndex >= sentences.length) {
+                gameCompleted();
+                return;
+            }
+            
+            loadWordsForCurrentSentence();
+        }
+        
+        // Mevcut cümlenin kelimelerini yükle
+        function loadWordsForCurrentSentence() {
+            // Kelimeleri karıştır ve ekrana yerleştir
+            const shuffledWords = [...sentences[currentSentenceIndex].words];
+            shuffleArray(shuffledWords);
+            
+            // Kelimeleri ekrana yerleştir
+            wordsContainer.innerHTML = '';
+            shuffledWords.forEach(word => {
+                const wordElement = document.createElement('div');
+                wordElement.classList.add('word');
+                wordElement.textContent = word;
+                wordElement.addEventListener('click', () => selectWord(word, wordElement));
+                wordsContainer.appendChild(wordElement);
+            });
+            
+            // UI'ı sıfırla
+            answerContainer.innerHTML = '';
+            resultElement.style.display = 'none';
+            selectedWords = [];
+            checkButton.disabled = true;
+            nextButton.disabled = true;
+        }
+
+        // Kelime seçme
+        function selectWord(word, element) {
+            // Kelimeyi seçilmiş olarak işaretle
+            element.classList.add('selected');
+            
+            // Seçilen kelimeyi listeye ekle
+            selectedWords.push(word);
+            
+            // Seçilen kelimeyi cevap konteynerine ekle
+            const selectedWordElement = document.createElement('div');
+            selectedWordElement.classList.add('selected-word');
+            selectedWordElement.textContent = word;
+            selectedWordElement.addEventListener('click', () => removeWord(word, element, selectedWordElement));
+            answerContainer.appendChild(selectedWordElement);
+            
+            // Ses efekti ekle
+            playSoundEffect('select');
+            
+            // Tüm kelimeler seçildiyse kontrol butonunu aktifleştir
+            if (selectedWords.length === sentences[currentSentenceIndex].words.length) {
+                checkButton.disabled = false;
+            }
+        }
+
+        // Seçilen kelimeyi kaldır
+        function removeWord(word, originalElement, selectedElement) {
+            // Kelimeyi listeden kaldır
+            const index = selectedWords.indexOf(word);
+            if (index > -1) {
+                selectedWords.splice(index, 1);
+            }
+            
+            // Seçilen kelime elementini kaldır
+            selectedElement.remove();
+            
+            // Orijinal kelime elementini tekrar seçilebilir yap
+            originalElement.classList.remove('selected');
+            
+            // Ses efekti ekle
+            playSoundEffect('deselect');
+            
+            // Kontrol butonunu devre dışı bırak
+            checkButton.disabled = true;
+        }
+
+        // Cevabı kontrol et
+        function checkAnswer() {
+            const userAnswer = selectedWords.join(' ');
+            const correctAnswer = sentences[currentSentenceIndex].correct;
+            
+            if (userAnswer === correctAnswer) {
+                // Doğru cevap
+                resultElement.textContent = 'Tebrikler! Doğru cevap. 🎉';
+                resultElement.className = 'result correct';
+                
+                // Puanı artır (zorluk seviyesine ve ipucu kullanımına göre)
+                let pointsEarned = 10;
+                
+                if (gameMode === 'medium') {
+                    pointsEarned = 15;
+                } else if (gameMode === 'hard') {
+                    pointsEarned = 20;
+                }
+                
+                // İpucu kullanıldıysa puandan düş
+                pointsEarned = Math.max(5, pointsEarned - (hintsUsed * 2));
+                
+                score += pointsEarned;
+                scoreElement.textContent = score;
+                
+                // Ses efekti
+                playSoundEffect('correct');
+                
+                // Konfeti efekti
+                createConfetti();
+                
+                // Mevcut cümleyi ilerlet
+                currentSentenceIndex++;
+                
+                // Sonraki soruya geçiş butonunu aktifleştir
+                nextButton.disabled = false;
+                checkButton.disabled = true;
+            } else {
+                // Yanlış cevap
+                resultElement.textContent = 'Tekrar dene! Doğru cümleyi oluşturmaya çalış. 🤔';
+                resultElement.className = 'result incorrect';
+                
+                // Ses efekti
+                playSoundEffect('incorrect');
+            }
+            
+            resultElement.style.display = 'block';
+        }
+
+        // Cevabı sıfırla
+        function resetAnswer() {
+            // Tüm kelimeleri tekrar seçilebilir yap
+            document.querySelectorAll('.word').forEach(word => {
+                word.classList.remove('selected');
+            });
+            
+            // Seçilen kelimeleri temizle
+            answerContainer.innerHTML = '';
+            selectedWords = [];
+            
+            // Sonucu temizle
+            resultElement.style.display = 'none';
+            
+            // Butonları güncelle
+            checkButton.disabled = true;
+            
+            // Ses efekti
+            playSoundEffect('reset');
+        }
+
+        // İpucu göster
+        function showHint() {
+            if (hintsUsed < maxHints) {
+                hintsUsed++;
+                hintContainer.style.display = 'block';
+                hintText.textContent = sentences[currentSentenceIndex].hint;
+                
+                // Ses efekti
+                playSoundEffect('hint');
+                
+                if (hintsUsed >= maxHints) {
+                    hintButton.disabled = true;
+                }
+            }
+        }
+
+        // Sonraki cümleye geç
+        function nextSentence() {
+            hintContainer.style.display = 'none';
+            loadSentence();
+        }
+
+        // Oyun tamamlandı
+        function gameCompleted() {
+            wordsContainer.innerHTML = '';
+            answerContainer.innerHTML = '';
+            
+            const completionMessage = document.createElement('div');
+            completionMessage.innerHTML = `
+                <h2>Tebrikler! 🎊🎉</h2>
+                <p>Tüm cümleleri tamamladın. Toplam puanın: <strong>${score}</strong></p>
+                <p>Harika bir iş çıkardın!</p>
+                <div style="margin-top: 20px;">
+                    <button id="playAgainButton" style="background-color: var(--accent-color-2); color: black;">Tekrar Oyna</button>
+                </div>
+            `;
+            completionMessage.style.textAlign = 'center';
+            answerContainer.appendChild(completionMessage);
+            
+            // Tekrar oynama düğmesine tıklama olayı ekle
+            document.getElementById('playAgainButton').addEventListener('click', goBackToLevelSelect);
+            
+            checkButton.disabled = true;
+            nextButton.disabled = true;
+            hintButton.disabled = true;
+            
+            // Bol konfeti efekti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => createConfetti(), i * 100);
+            }
+            
+            // Başarı sesi çal
+            playSoundEffect('complete');
+        }
+
+        // Konfeti efekti
+        function createConfetti() {
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Rastgele konum
+                confetti.style.left = Math.random() * 100 + 'vw';
+                
+                // Rastgele renk
+                const colors = ['#ffd166', '#ef476f', '#06d6a0', '#118ab2', '#073b4c', '#6a3093'];
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Rastgele boyut
+                const size = Math.random() * 10 + 5;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                
+                // Rastgele şekil
+                const shapes = ['circle', 'square', 'rectangle'];
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                
+                if (shape === 'circle') {
+                    confetti.style.borderRadius = '50%';
+                } else if (shape === 'rectangle') {
+                    confetti.style.width = size * 2 + 'px';
+                }
+                
+                // Rastgele animasyon süresi
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                document.body.appendChild(confetti);
+                
+                // Animasyon bittikten sonra elementi kaldır
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Ses Efektleri
+        function playSoundEffect(type) {
+            // Ses efektleri eklenebilir (isteğe bağlı)
+            // Şimdilik konsola log yazıyoruz
+            console.log('Sound effect:', type);
+        }
+
+        // Diziyi karıştır
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Oyunu başlat
+        window.addEventListener('load', initGame);
+    </script>
+</body>
+</html> 

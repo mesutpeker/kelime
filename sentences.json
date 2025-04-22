@@ -1,0 +1,308 @@
+{
+  "easy": [
+    {
+      "words": ["Ayşe", "okula", "gidiyor"],
+      "correct": "Ayşe okula gidiyor",
+      "hint": "Cümlede önce KİM, sonra NEREYE, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Köpek", "kemik", "yiyor"],
+      "correct": "Köpek kemik yiyor",
+      "hint": "Cümlede önce KİM, sonra NEYİ, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Ali", "top", "oynuyor"],
+      "correct": "Ali top oynuyor",
+      "hint": "Cümle KİM ile başlar. Sonra NE ile OYNUYOR?"
+    },
+    {
+      "words": ["Kuşlar", "gökyüzünde", "uçuyor"],
+      "correct": "Kuşlar gökyüzünde uçuyor",
+      "hint": "Önce KİMLER, sonra NEREDE, sonra NE YAPIYORLAR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Ben", "süt", "içiyorum"],
+      "correct": "Ben süt içiyorum",
+      "hint": "Önce KİM, sonra NE, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Çocuklar", "parkta", "oynar"],
+      "correct": "Çocuklar parkta oynar",
+      "hint": "Önce KİMLER, sonra NEREDE, sonra NE YAPARLAR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Kedi", "süt", "içti"],
+      "correct": "Kedi süt içti",
+      "hint": "Önce KİM, sonra NE, sonra NE YAPTI sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Arı", "çiçeğe", "kondu"],
+      "correct": "Arı çiçeğe kondu",
+      "hint": "Önce KİM, sonra NEREYE, sonra NE YAPTI sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Biz", "bahçede", "oynadık"],
+      "correct": "Biz bahçede oynadık",
+      "hint": "Önce KİMLER, sonra NEREDE, sonra NE YAPTIK sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Yıldızlar", "geceleyin", "parlar"],
+      "correct": "Yıldızlar geceleyin parlar",
+      "hint": "Önce NELER, sonra NE ZAMAN, sonra NE YAPARLAR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Can", "kitap", "okuyor"],
+      "correct": "Can kitap okuyor",
+      "hint": "Önce KİM, sonra NE, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Bebek", "süt", "içiyor"],
+      "correct": "Bebek süt içiyor",
+      "hint": "Önce KİM, sonra NE, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Öğretmen", "ders", "anlatıyor"],
+      "correct": "Öğretmen ders anlatıyor",
+      "hint": "Önce KİM, sonra NE, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Güneş", "parlak", "doğdu"],
+      "correct": "Güneş parlak doğdu",
+      "hint": "Önce NE, sonra NASIL, sonra NE YAPTI sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Serçe", "dala", "kondu"],
+      "correct": "Serçe dala kondu",
+      "hint": "Önce KİM, sonra NEREYE, sonra NE YAPTI sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Bülbül", "güzel", "ötüyor"],
+      "correct": "Bülbül güzel ötüyor",
+      "hint": "Önce KİM, sonra NASIL, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Çocuk", "şarkı", "söylüyor"],
+      "correct": "Çocuk şarkı söylüyor",
+      "hint": "Önce KİM, sonra NE, sonra NE YAPIYOR sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Bulutlar", "hızla", "geçti"],
+      "correct": "Bulutlar hızla geçti",
+      "hint": "Önce NELER, sonra NASIL, sonra NE YAPTI sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Deniz", "bugün", "dalgalı"],
+      "correct": "Deniz bugün dalgalı",
+      "hint": "Önce NE, sonra NE ZAMAN, sonra NASIL sorusunun cevabı gelir."
+    },
+    {
+      "words": ["Çiftçi", "tarlada", "çalışıyor"],
+      "correct": "Çiftçi tarlada çalışıyor",
+      "hint": "Önce KİM, sonra NEREDE, sonra NE YAPIYOR sorusunun cevabı gelir."
+    }
+  ],
+  "medium": [
+    {
+      "words": ["Kardeşim", "bahçede", "kırmızı", "top", "oynuyor"],
+      "correct": "Kardeşim bahçede kırmızı top oynuyor",
+      "hint": "KİM, NEREDE, hangi renk topla oynuyor?"
+    },
+    {
+      "words": ["Babam", "akşam", "işten", "eve", "geldi"],
+      "correct": "Babam akşam işten eve geldi",
+      "hint": "KİM, NE ZAMAN, NEREDEN, NEREYE, NE YAPTI?"
+    },
+    {
+      "words": ["Küçük", "kedi", "yastığın", "üzerinde", "uyuyor"],
+      "correct": "Küçük kedi yastığın üzerinde uyuyor",
+      "hint": "NASIL, KİM, NERENİN, NERESINDE, NE YAPIYOR?"
+    },
+    {
+      "words": ["Annem", "bana", "güzel", "bir", "hediye aldı"],
+      "correct": "Annem bana güzel bir hediye aldı",
+      "hint": "KİM, KİME, NASIL, (bir), NE aldı?"
+    },
+    {
+      "words": ["Minik", "kuş", "ağacın", "dalına", "kondu"],
+      "correct": "Minik kuş ağacın dalına kondu",
+      "hint": "NASIL, KİM, NERENİN, NERESINE, NE YAPTI?"
+    },
+    {
+      "words": ["Öğretmenimiz", "bugün", "sınıfa", "erken", "geldi"],
+      "correct": "Öğretmenimiz bugün sınıfa erken geldi",
+      "hint": "KİM, NE ZAMAN, NEREYE, NASIL, NE YAPTI?"
+    },
+    {
+      "words": ["Sarı", "kelebek", "çiçeğin", "üzerine", "kondu"],
+      "correct": "Sarı kelebek çiçeğin üzerine kondu",
+      "hint": "NASIL, KİM, NERENİN, NERESINE, NE YAPTI?"
+    },
+    {
+      "words": ["Arkadaşım", "bana", "doğum", "günü", "hediyesi verdi"],
+      "correct": "Arkadaşım bana doğum günü hediyesi verdi",
+      "hint": "KİM, KİME, NE verdi? (doğum günü = sıfat)"
+    },
+    {
+      "words": ["Küçük", "çocuk", "parkta", "çok", "eğlendi"],
+      "correct": "Küçük çocuk parkta çok eğlendi",
+      "hint": "NASIL, KİM, NEREDE, NE KADAR, NE YAPTI?"
+    },
+    {
+      "words": ["Ali", "okula", "yeni", "bir", "çanta götürdü"],
+      "correct": "Ali okula yeni bir çanta götürdü",
+      "hint": "KİM, NEREYE, NASIL, (bir), NE götürdü?"
+    },
+    {
+      "words": ["Kuşlar", "gökyüzünde", "neşeyle", "özgürce", "uçuyor"],
+      "correct": "Kuşlar gökyüzünde neşeyle özgürce uçuyor",
+      "hint": "KİMLER, NEREDE, NASIL, NASIL, NE YAPIYOR?"
+    },
+    {
+      "words": ["Ayşe", "her", "gün", "düzenli", "kitap okuyor"],
+      "correct": "Ayşe her gün düzenli kitap okuyor",
+      "hint": "KİM, HANGİ SIKLIKLA, NE SIKLIKLA, NASIL, NE YAPIYOR?"
+    },
+    {
+      "words": ["Çocuklar", "bahçede", "neşeyle", "top", "oynuyor"],
+      "correct": "Çocuklar bahçede neşeyle top oynuyor",
+      "hint": "KİMLER, NEREDE, NASIL, NE, OYNUYOR?"
+    },
+    {
+      "words": ["Bülbül", "dalda", "güzel", "şarkılar", "söylüyor"],
+      "correct": "Bülbül dalda güzel şarkılar söylüyor",
+      "hint": "KİM, NEREDE, NASIL, NE, SÖYLÜYOR?"
+    },
+    {
+      "words": ["Dere", "taşların", "arasından", "hızla", "akıyor"],
+      "correct": "Dere taşların arasından hızla akıyor",
+      "hint": "NE, NELERİN, NERESINDEN, NASIL, NE YAPIYOR?"
+    },
+    {
+      "words": ["Karıncalar", "yiyecekleri", "yuvalarına", "dikkatle", "taşıyor"],
+      "correct": "Karıncalar yiyecekleri yuvalarına dikkatle taşıyor",
+      "hint": "KİMLER, NEYİ, NEREYE, NASIL, NE YAPIYOR?"
+    },
+    {
+      "words": ["Tavşan", "havucu", "hızlıca", "iki", "lokmada yedi"],
+      "correct": "Tavşan havucu hızlıca iki lokmada yedi",
+      "hint": "KİM, NEYİ, NASIL, KAÇ, NE YAPTI?"
+    },
+    {
+      "words": ["Öğrenciler", "sınavı", "zamanında", "başarıyla", "tamamladı"],
+      "correct": "Öğrenciler sınavı zamanında başarıyla tamamladı",
+      "hint": "KİMLER, NEYİ, NE ZAMAN, NASIL, NE YAPTI?"
+    },
+    {
+      "words": ["Ağaçlar", "baharda", "taze", "filizler", "verir"],
+      "correct": "Ağaçlar baharda taze filizler verir",
+      "hint": "NELER, NE ZAMAN, NASIL, NE, YAPAR?"
+    },
+    {
+      "words": ["Balıklar", "suda", "özgürce", "hızla", "yüzer"],
+      "correct": "Balıklar suda özgürce hızla yüzer",
+      "hint": "KİMLER, NEREDE, NASIL, NASIL, NE YAPAR?"
+    }
+  ],
+  "hard": [
+    {
+      "words": ["Ahmet", "her", "gün", "okuldan", "sonra", "koşu yapıyor"],
+      "correct": "Ahmet her gün okuldan sonra koşu yapıyor",
+      "hint": "KİM, HANGİ SIKLIKLA, NE ZAMANDAN, SONRA, NE YAPIYOR? Önce kim olduğunu, sonra ne sıklıkla ve ne zaman yaptığını, en son ne yaptığını söyleriz."
+    },
+    {
+      "words": ["Arkadaşımla", "birlikte", "dün", "sinemada", "güzel", "film izledik"],
+      "correct": "Arkadaşımla birlikte dün sinemada güzel film izledik",
+      "hint": "KİMLE, NE ŞEKILDE, NE ZAMAN, NEREDE, NASIL, NE izledik? Önce kimle, sonra ne zaman ve nerede, son olarak ne izlediğini söyleriz."
+    },
+    {
+      "words": ["Küçük", "çocuk", "bahçedeki", "rengarenk", "çiçekleri", "topluyor"],
+      "correct": "Küçük çocuk bahçedeki rengarenk çiçekleri topluyor",
+      "hint": "NASIL, KİM, NEREDEKİ, NASIL, NELERİ, NE YAPIYOR? Önce çocuğu tarifle (küçük çocuk), sonra yeri, sonra ne topladığını ve en son eylemi söyle."
+    },
+    {
+      "words": ["Dedem", "her", "sabah", "erkenden", "gazete", "okur"],
+      "correct": "Dedem her sabah erkenden gazete okur",
+      "hint": "KİM, HANGİ SIKLIKLA, NE ZAMAN, NE ZAMAN, NE, YAPAR?"
+    },
+    {
+      "words": ["Öğretmenimiz", "bizlere", "her", "hafta", "yeni", "ödev veriyor"],
+      "correct": "Öğretmenimiz bizlere her hafta yeni ödev veriyor",
+      "hint": "KİM, KİMLERE, HANGİ SIKLIKLA, NE ZAMAN, NASIL, NE veriyor?"
+    },
+    {
+      "words": ["Minik", "serçe", "ağacın", "dalından", "hızlıca", "uçtu"],
+      "correct": "Minik serçe ağacın dalından hızlıca uçtu",
+      "hint": "NASIL, KİM, NERENİN, NERESINDEN, NASIL, NE YAPTI?"
+    },
+    {
+      "words": ["Annem", "sofrada", "bize", "lezzetli", "yemekler", "hazırladı"],
+      "correct": "Annem sofrada bize lezzetli yemekler hazırladı",
+      "hint": "KİM, NEREDE, KİME, NASIL, NELER, YAPTI?"
+    },
+    {
+      "words": ["Çiftçi", "tarlasında", "sabahtan", "akşama", "kadar", "çalışır"],
+      "correct": "Çiftçi tarlasında sabahtan akşama kadar çalışır",
+      "hint": "KİM, NEREDE, NE ZAMANDAN, NE ZAMANA, KADAR, NE YAPAR?"
+    },
+    {
+      "words": ["Çocuklar", "piknikte", "neşeyle", "koşarak", "oyunlar", "oynadılar"],
+      "correct": "Çocuklar piknikte neşeyle koşarak oyunlar oynadılar",
+      "hint": "KİMLER, NEREDE, NASIL, NASIL, NELER, OYNADILAR?"
+    },
+    {
+      "words": ["Kuş", "yuvasına", "ağzında", "minik", "dal", "getirdi"],
+      "correct": "Kuş yuvasına ağzında minik dal getirdi",
+      "hint": "KİM, NEREYE, NERESINDE, NASIL, NE, GETİRDİ?"
+    },
+    {
+      "words": ["Ben", "her", "akşam", "uyumadan", "önce", "kitap okurum"],
+      "correct": "Ben her akşam uyumadan önce kitap okurum",
+      "hint": "KİM, HANGİ SIKLIKLA, NE ZAMAN, NE YAPMADAN, ÖNCE, NE YAPARIM?"
+    },
+    {
+      "words": ["Karıncalar", "yazın", "kışa", "hazırlık", "için", "çalışırlar"],
+      "correct": "Karıncalar yazın kışa hazırlık için çalışırlar",
+      "hint": "KİMLER, NE ZAMAN, NEYE, NE, İÇİN, NE YAPARLAR?"
+    },
+    {
+      "words": ["Çiçekler", "bahar", "gelince", "bahçemizde", "güzelce", "açar"],
+      "correct": "Çiçekler bahar gelince bahçemizde güzelce açar",
+      "hint": "NELER, NE, GELİNCE, NEREDE, NASIL, NE YAPAR?"
+    },
+    {
+      "words": ["Bahçemizdeki", "elma", "ağacı", "bu", "yıl", "meyve verdi"],
+      "correct": "Bahçemizdeki elma ağacı bu yıl meyve verdi",
+      "hint": "NEREDEKİ, NE, AĞACI, BU, NE ZAMAN, NE VERDİ?"
+    },
+    {
+      "words": ["Deniz", "kenarında", "ailece", "güzel", "bir", "gün geçirdik"],
+      "correct": "Deniz kenarında ailece güzel bir gün geçirdik",
+      "hint": "NE, KENARINDA, NASIL, NASIL, BİR, NE GEÇİRDİK?"
+    },
+    {
+      "words": ["Çocuk", "bahçede", "renkli", "toplarla", "neşeyle", "oynuyor"],
+      "correct": "Çocuk bahçede renkli toplarla neşeyle oynuyor",
+      "hint": "KİM, NEREDE, NASIL, NELERLE, NASIL, OYNUYOR?"
+    },
+    {
+      "words": ["Öğretmen", "sınıfta", "öğrencilere", "yeni", "konuyu", "anlatıyor"],
+      "correct": "Öğretmen sınıfta öğrencilere yeni konuyu anlatıyor",
+      "hint": "KİM, NEREDE, KİMLERE, NASIL, NEYİ, ANLATIYOR?"
+    },
+    {
+      "words": ["Annem", "mutfakta", "bizim", "için", "pasta", "yapıyor"],
+      "correct": "Annem mutfakta bizim için pasta yapıyor",
+      "hint": "KİM, NEREDE, KİMİN, İÇİN, NE, YAPIYOR?"
+    },
+    {
+      "words": ["Güneş", "sabahları", "doğudan", "parlak", "ışıklarla", "doğar"],
+      "correct": "Güneş sabahları doğudan parlak ışıklarla doğar",
+      "hint": "NE, NE ZAMAN, NEREDEN, NASIL, NELERLE, DOĞAR?"
+    },
+    {
+      "words": ["Minik", "serçe", "penceremize", "her", "sabah", "konuyor"],
+      "correct": "Minik serçe penceremize her sabah konuyor",
+      "hint": "NASIL, KİM, NEREYE, HANGİ SIKLIKLA, NE ZAMAN, KONUYOR?"
+    }
+  ]
+} 
