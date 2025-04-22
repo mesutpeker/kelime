@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelime Oyunu - Cümle Kurma</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #6a3093;
@@ -17,11 +17,13 @@
             --text-color: #333;
             --success-color: #0b6e4f;
             --error-color: #d62828;
+            --primary-font: 'Balsamiq Sans', 'Comic Sans MS', cursive, sans-serif;
+            --secondary-font: 'Quicksand', Arial, sans-serif;
         }
         
         * {
             box-sizing: border-box;
-            font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+            font-family: var(--primary-font);
         }
         
         body {
@@ -37,15 +39,18 @@
             align-items: center;
             min-height: 100vh;
             color: var(--text-color);
+            font-size: 1.05rem;
+            line-height: 1.5;
         }
         
         h1 {
             color: var(--primary-color);
             text-align: center;
             margin-bottom: 20px;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             animation: bounce 2s infinite alternate;
+            letter-spacing: 1px;
         }
         
         @keyframes bounce {
@@ -98,7 +103,7 @@
             background-color: #e6f7ff;
             border: 1px solid #91d5ff;
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             position: relative;
             transition: all 0.3s;
         }
@@ -132,7 +137,7 @@
             cursor: pointer;
             -webkit-user-select: none;
             user-select: none;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
             transition: all 0.2s;
             position: relative;
@@ -195,7 +200,7 @@
             border-radius: 25px;
             margin-right: 5px;
             margin-bottom: 5px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             position: relative;
             cursor: pointer;
             font-weight: bold;
@@ -245,12 +250,13 @@
             padding: 12px 25px;
             border-radius: 30px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.05rem;
             transition: all 0.3s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
             font-weight: bold;
+            font-family: var(--primary-font);
         }
         
         button::after {
@@ -313,7 +319,7 @@
             padding: 15px;
             border-radius: 15px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             display: none;
             animation: fadeIn 0.5s;
         }
@@ -412,7 +418,7 @@
         }
         
         .level-select-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 30px;
             color: var(--primary-color);
         }
@@ -466,10 +472,11 @@
         .level-card h3 {
             margin-top: 10px;
             margin-bottom: 10px;
+            font-size: 1.4rem;
         }
         
         .level-card p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #666;
             margin-bottom: 15px;
         }
